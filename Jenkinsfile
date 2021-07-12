@@ -8,8 +8,12 @@ pipeline {
 	stages {
 		stage('build') {
 			steps {
-				sh 'pip install -U pip --user'
-				sh 'pip install -r requirements.txt --user'
+				// sh 'pip install -U pip --user'
+				// sh 'pip install -r requirements.txt --user'
+				sh 'python -m venv flask-jenkins'
+				sh 'source flask-jenkins/bin/activate'
+				sh 'python -m pip install --upgrade pip'
+				sh 'python -m pip install -r requirements.txt'
 			}
 		}
 		stage('test') {
